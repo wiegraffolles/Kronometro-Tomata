@@ -40,20 +40,32 @@ $(document).ready(function() {
 		handleTimer(setpom, false);
 	}
 
+	//Disable the start button if the program just started to make sure the user 
+	//presses the pomodoro button
+	if(localStorage.getItem("disableflag") === "0") {
+		$('#startbutton').addClass("disabled");
+	}
+
 	//Initializes and starts the Pomodoro
 	$("#pomodorobutton").click(function(){
+		//Reenable disabled start button
+		reenablestart();
 		//Pass setpom to handleTimer
 		handleTimer(setpom, true);
 	});
 
 	//Initializes and starts the short break
 	$("#shortbreakbutton").click(function(){
+		//Reenable disabled start button
+		reenablestart();
 		//Pass shrtbreak to handleTimer
 		handleTimer(shrtbreak, true);
 	});
 
 	//Initializes and starts the long break
 	$("#longbreakbutton").click(function(){
+		//Reenable disabled start button
+		reenablestart();
 		//Pass lngbreak to handleTimer
 		handleTimer(lngbreak, true);
 	});
@@ -86,20 +98,10 @@ $(document).ready(function() {
 
 	//Resets the timer to top of countdown, gets "top of countdown" value from timerinput
 	$("#resetbutton").click(function(){
-		$("#timerdisplay").createTimer({
-			time_in_seconds: localStorage.getItem("timerinput"),
-			tick: function(){
-				localStorage.setItem("timerstorage", arguments[2]);
-				localStorage.setItem("timerstorageseconds", arguments[1]);
-				$("span").css("width",((arguments[1] / localStorage.getItem("timerinput")) * 100 + "%"));
-			},
-			//Call buzzer function defined in the final countdown, play alarm tone
-			buzzer: function(){
-				alarm.play();
-			}
-		});
+		executeReset();
 	});
 
+	//Handle Hotkeys
 	var isAlt = false;
 	$(document).keyup(function (e) {
 		if (e.which === 18) isAlt = false;
@@ -143,6 +145,7 @@ function loadSettings() {
     localStorage.setItem("longbreak", 30);
     localStorage.setItem("pomflag", 1);
     localStorage.setItem("pomodorocount", 0);
+    localStorage.setItem("disableflag", 0);
   }
 }
 
@@ -200,7 +203,7 @@ function restartTimer() {
 			buzzer: function(){
 				alarm.play();
 				document.title = "Time's up!";
-				if(localStorage.getItem("timerinput") === setpom) {
+				if(parseInt(localStorage.getItem("timerinput"), 10) === setpom) {
 					$("#pomodorocounter").text(
 						"Pomodoro Count: " + (localStorage.pomodorocount = (parseInt(localStorage.pomodorocount, 10) + 1))
 					);
@@ -234,19 +237,40 @@ function defaultLengths() {
 	localStorage.longbreak = 30;
 }
 
+//called by the 
 function executeReset() {
+	//Set timerstorage seconds to the maximum timer value and reset the progress bar
+	localStorage.timerstorageseconds = localStorage.timerinput;
+	$("span").css("width",("100%"));
 	$("#timerdisplay").createTimer({
-			time_in_seconds: localStorage.getItem("timerinput"),
-			tick: function(){
-				localStorage.setItem("timerstorage", arguments[2]);
-				localStorage.setItem("timerstorageseconds", arguments[1]);
-				$("span").css("width",((arguments[1] / localStorage.getItem("timerinput")) * 100 + "%"));
-			},
-			//Call buzzer function defined in the final countdown, play alarm tone
-			buzzer: function(){
-				alarm.play();
+		time_in_seconds: localStorage.getItem("timerinput"),
+		autostart: false,
+		tick: function(){
+			localStorage.setItem("timerstorage", arguments[2]);
+			localStorage.setItem("timerstorageseconds", arguments[1]);
+			$("span").css("width",((arguments[1] / localStorage.getItem("timerinput")) * 100 + "%"));
+			document.title = "Kronometro Tomata (" + $("#timerdisplay").text() + ")";
+		},
+		//Call buzzer function defined in the final countdown, play alarm tone
+		buzzer: function(){
+			alarm.play();
+			if(parseInt(localStorage.getItem("timerinput"), 10) === setpom) {
+				$("#pomodorocounter").text(
+					"Pomodoro Count: " + (localStorage.pomodorocount = (parseInt(localStorage.pomodorocount, 10) + 1))
+				);
 			}
-		});
+		}
+	});
+	//Reset the title timer even if the timer isn't started
+	document.title = "Kronometro Tomata (" + $("#timerdisplay").text() + ")";
+}
+
+//Enables the start button if disabled
+function reenablestart() {
+	if(localStorage.getItem("disableflag") === "0") {
+		$('#startbutton').removeClass("disabled");
+		localStorage.disableflag = "1";
+	}
 }
 
 })();

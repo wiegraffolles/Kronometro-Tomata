@@ -211,6 +211,11 @@ function restartTimer() {
 			}
 		});
 	}
+	//Set timer to "00:00" on reload if timer is equal to zero to avoid unwanted default to "Loading..." text
+	else if(localStorage.timerstorageseconds && parseInt(localStorage.timerstorageseconds, 10) === 0){
+		$("#timerdisplay").text("00:00");
+		$("span").css("width", 0);
+	}
 }
 
 function setLengths() {

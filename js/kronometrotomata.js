@@ -33,6 +33,10 @@ $(document).ready(function() {
 
 	//Check if timerstorageseconds is set to a value
 	if(localStorage.getItem("timerstorageseconds")) {
+		//Set the Pomodoro counter to its current value so it is properly displayed
+		$("#pomodorocounter").text(
+			"Pomodoro Count: " + (localStorage.pomodorocount = parseInt(localStorage.pomodorocount, 10))
+		);
 		restartTimer();
 	}
 	//Otherwise set timerdisplay to the normal pomodoro duration with autostart set to false

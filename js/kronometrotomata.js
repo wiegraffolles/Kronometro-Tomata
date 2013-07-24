@@ -165,7 +165,7 @@ function handleTimer(timertype, autostartflag) {
 			//(taken from tick arguments[1]) and adjust the progress bar
 			localStorage.setItem("timerstorageseconds", arguments[1]);
 			$("span").css("width",((arguments[1] / localStorage.getItem("timerinput")) * 100 + "%"));
-			document.title = "Kronometro Tomata (" + $("#timerdisplay").text() + ")";
+			document.title = "(" + $("#timerdisplay").text() + ") Kronometro Tomata";
 		},
 		//Call buzzer function defined in the final countdown, 
 		//play alarm tone, add to pomodoro count and output count text 
@@ -199,7 +199,7 @@ function restartTimer() {
 				//(taken from tick arguments[1]) and adjust the progress bar
 				localStorage.setItem("timerstorageseconds", arguments[1]);
 				$("span").css("width",((arguments[1] / localStorage.getItem("timerinput")) * 100 + "%"));
-				document.title = "Kronometro Tomata (" + $("#timerdisplay").text() + ")";
+				document.title = "(" + $("#timerdisplay").text() + ") Kronometro Tomata";
 			},
 			//Call buzzer function defined in the final countdown, 
 			//play alarm tone, add to pomodoro count and output count text 
@@ -258,7 +258,7 @@ function executeReset() {
 			localStorage.setItem("timerstorage", arguments[2]);
 			localStorage.setItem("timerstorageseconds", arguments[1]);
 			$("span").css("width",((arguments[1] / localStorage.getItem("timerinput")) * 100 + "%"));
-			document.title = "Kronometro Tomata (" + $("#timerdisplay").text() + ")";
+			document.title = "(" + $("#timerdisplay").text() + ") Kronometro Tomata";
 		},
 		//Call buzzer function defined in the final countdown, play alarm tone
 		buzzer: function(){
@@ -271,7 +271,7 @@ function executeReset() {
 		}
 	});
 	//Reset the title timer even if the timer isn't started
-	document.title = "Kronometro Tomata (" + $("#timerdisplay").text() + ")";
+	document.title = "(" + $("#timerdisplay").text() + ") Kronometro Tomata";
 }
 
 //Enables the start button if disabled

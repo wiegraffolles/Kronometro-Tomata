@@ -50,6 +50,9 @@ $(document).ready(function() {
 		$('#startbutton').addClass("disabled");
 	}
 
+	//Load the program theme
+	loadTheme();
+
 	//Initializes and starts the Pomodoro
 	$("#pomodorobutton").click(function(){
 		//Reenable disabled start button
@@ -105,6 +108,17 @@ $(document).ready(function() {
 		executeReset();
 	});
 
+	//Sets theme to default ("light")
+	$("#defaultthemebutton").click(function(){
+		localStorage.setItem("theme", "default");
+		loadTheme();
+	});
+
+	$("#darkthemebutton").click(function(){
+		localStorage.setItem("theme", "dark");
+		loadTheme();
+	});
+
 	//Handle Hotkeys
 	var isAlt = false;
 	$(document).keyup(function (e) {
@@ -150,6 +164,7 @@ function loadSettings() {
     localStorage.setItem("pomflag", 1);
     localStorage.setItem("pomodorocount", 0);
     localStorage.setItem("disableflag", 0);
+    localStorage.setItem("theme", "default");
   }
 }
 
@@ -279,6 +294,16 @@ function reenablestart() {
 	if(localStorage.getItem("disableflag") === "0") {
 		$('#startbutton').removeClass("disabled");
 		localStorage.disableflag = "1";
+	}
+}
+
+//Load either the default program theme, or one selected by the user
+function loadTheme() {
+	if(localStorage.getItem("theme") === "default") {
+		$("#stylesheet").attr('href', 'css/foundation.css');
+	}
+	else if(localStorage.getItem("theme") === "dark") {
+		$("#stylesheet").attr('href', 'css/foundationDark.css');
 	}
 }
 

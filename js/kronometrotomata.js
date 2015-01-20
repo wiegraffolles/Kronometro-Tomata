@@ -118,6 +118,11 @@ $(document).ready(function() {
 		localStorage.setItem("theme", "dark");
 		loadTheme();
 	});
+    
+    $("#herothemebutton").click(function(){
+		localStorage.setItem("theme", "hero");
+		loadTheme();
+	});
 
 	//Handle Hotkeys
 	var isAlt = false;
@@ -300,10 +305,13 @@ function reenablestart() {
 //Load either the default program theme, or one selected by the user
 function loadTheme() {
 	if(localStorage.getItem("theme") === "default") {
-		$("#stylesheet").attr('href', 'css/foundation.css');
+		$("#theme").attr('href', '');//Empty to un-load theme mask
 	}
 	else if(localStorage.getItem("theme") === "dark") {
-		$("#stylesheet").attr('href', 'css/foundationDark.css');
+		$("#theme").attr('href', 'css/dark.min.css');
+	}
+    else if(localStorage.getItem("theme") === "hero") {
+        $("#theme").attr('href', 'css/hero.min.css');
 	}
 }
 

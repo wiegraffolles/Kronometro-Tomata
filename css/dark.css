@@ -1,0 +1,81 @@
+/*                     
+ *   ____          _   
+ *  |    \ ___ ___| |_ 
+ *  |  |  | .'|  _| '_|
+ *  |____/|__,|_| |_,_|
+ *                     
+ *        Version 0.0.1
+ *
+ *  Jake Strichek 2015 <hippyjake@gmail.com>
+ *
+ * ====================
+ *
+ *  This file can be used as an example to make a new theme mask. The "mask"
+ *  allows for fast and light switching by only modifying elements that you
+ *  want to change. A small file will also make it easy to update the theme,
+ *  without the need to rebuild the whole file. The main style will need be
+ *  loaded from a main stylesheet, in this example that is foundation.css.
+ *
+ * ====================
+ *
+ */
+
+body,
+fieldset legend {
+    background: #272822;
+    color: #fff
+}
+.panel dl,
+.panel h1,
+.panel h2,
+.panel h3,
+.panel h4,
+.panel h5,
+.panel h6,
+.panel li,
+.panel p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+    color: #fff
+}
+fieldset {
+    border: 1px solid #444
+}
+.breadcrumbs > * .current {
+    color: #444
+}
+.panel {
+    background: #272822;
+    border-color: #444
+}
+.tabs .tab-title > a,
+.tabs dd > a {
+    background-color: transparent;
+    color: #fff
+}
+.tabs .tab-title > a:hover,
+.tabs dd > a:hover {
+    background-color: #32332b
+}
+.tabs .tab-title.active a,
+.tabs dd.active a {
+    background-color: #444;
+    color: #fff
+}
+hr {
+    border: 1px solid #444
+}
+.reveal-modal,
+dialog {
+    background-color: #272822;
+    border: solid 1px #444
+}
+.progress {
+    background-color: transparent;
+    border: 1px solid #444
+}

@@ -1,242 +1,200 @@
-<!DOCTYPE html>
-<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!doctype html>
+<html class="no-js" lang="en">
 
 <head>
-	<meta charset="utf-8" />
-  	<meta name="viewport" content="width=device-width" />
-  	<title>Kronometro Tomata</title>
-
-  	<link id="stylesheet" rel="stylesheet" href="css/foundation.css" />
-
-	<link rel="stylesheet" href="css/general_foundicons.css" />
-
-  	<script src="js/vendor/custom.modernizr.js"></script>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kronometro Tomata</title>
+    <link rel="stylesheet" href="css/foundation.min.css" />
+    <link id="theme" rel="stylesheet" />
+    <!--Theme mask-->
+    <script src="js/vendor/modernizr.js"></script>
+    <link rel="stylesheet" href="css/general_foundicons.css" />
 </head>
+
 <body>
-<!--The Header-->
-	<div class="row">
-		<div class="large-5 columns">
-			<h2>Kronometro Tomata</h2>
-			<p>This is version 1.6</p>
-		</div>
-		<!--Info and settings buttons which fire info and settings modals-->
-		<div class="large-2 large-offset-5 columns">
-			<ul class ="button-group even-2 two-up">
-				<a id ="infobutton" href="#" class="button" data-reveal-id="infoModal"><i class="foundicon-idea"></i></a>
-				<a id ="settingsbutton" href="#" class="button" data-reveal-id="settingsModal"><i class="foundicon-settings"></i></a>
-			</ul>
-		</div>
-	</div>
-	
-	<!--horizonal line spans screen-->
-	<div class="row">
-		<div class="large-12 columns">
-			<hr/>
-		</div>
-	</div>
-	
-	<!--Settings Modal-->
-	<div id="settingsModal" class="reveal-modal">
-  		<h2>Settings</h2>
-		<form>
-		  <fieldset>
-		    <legend>Timer Lengths (Minutes)</legend>
-
-		    <label>Pomodoro Length</label>
-		    <input id="pomodoroinputbox" type="text" placeholder="Default is 25">
-
-		    <label>Short Break Length</label>
-		    <input id="shortbreakinputbox" type="text" placeholder="Default is 5">
-
-		    <label>Long Break Length</label>
-		    <input id="longbreakinputbox" type="text" placeholder="Default is 30">
-			<!--Set and Default set buttons-->
-			<ul class ="button-group even-3 three-up">
-				<li>
-					<a id="setlengthbutton" href="#" class="button">Set</a>
-				</li>
-				<li>
-					<a id="defaultbutton" href="#" class="secondary button">Reset Default Lengths</a>
-				</li>
-				<li>
-					<a id="resetcountbutton" href="#" class="alert button">Reset Pomodoro Count</a>
-				</li>
-			</ul>
-			<div class="row">
-				<div class="large-12 columns">
-					<div class="panel">
-						<h5>Theme Chooser</h5>
-						<ul class ="button-group even-2 two-up">
-							<li>
-								<a id="defaultthemebutton" href="#" class="button">Light</a>
-							</li>
-							<li>
-								<a id="darkthemebutton" href="#"class="button">Dark</a>
-							</li>
-						<p>
-							<strong>Theme support is experimental.</strong>
-						</p>
-					</div>
-		  </fieldset>
-		</form>
-  		<a class="close-reveal-modal">&#215;</a>
-	</div>
-
-	<!--Info Modal-->
-	<div id="infoModal" class="reveal-modal">
-		<h2>About Kronometro Tomata</h2>
-		<p>
-			Kronometro Tomata (KT) is a web application designed to let you use the Pomodoro Technique to manage your time more effectively and with more peace of mind. It includes the most basic time tracking and recording elements of the technique while leaving more complex recording up to the user to do as they like. Personally I like to use a simple pen and notebook to keep track of activities, other people prefer to use complex spreadsheet methods. KT leaves it up to you.
-		</p>
-		<p>
-			KT began as a project to correct the weak points me and my friends saw in the popular <a href="http://tomato-timer.com/">Tomato Timer</a> webapp. It also was a learning project for me to get used to writing Javascript and JQuery code, as well as using the Foundation framework. KT includes the settings functions that the developer of Tomato Timer promised but did not get around to including. It also is <strong>persistent</strong> and saves your timer progress across sessions so that even if you accidentally close the KT tab you can immediately reload it without losing your progress.
-		</p>
-		<p>
-			You can learn more about the Pomodoro Technique <a href="http://www.pomodorotechnique.com/book/">here</a>.
-		</p>
-		<p>
-			Kronometro Tomata is free software licensed under the GPL. To learn more about free software visit: <a href="http://www.fsf.org/">http://www.fsf.org/</a>.
-		</p>
-		<p>
-			The words "Kronometro Tomata" are taken from Esperanto. To learn more about Esperanto visit: <a href="http://en.lernu.net/">http://en.lernu.net/</a>.
-		</p>
-		<p>
-			Kronometro Tomata was written using the <a href="http://www.linuxmint.com/">Linux Mint</a> and <a href="http://www.netrunner-os.com/">Netrunner</a> distributions of GNU/Linux and the <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> web browser.
-		</p>
-			I can be contacted <a href="mailto:kyle.alexander.thompson@gmail.com">here</a>.
-		<p>
-		<p>
-			Dark theme and theme selection concept contributed by hippyjake.
-		<a class="close-reveal-modal">&#215;</a>
-	</div>
-
-	<div class="row">
-		<div class="large-12 columns">
-
-			<!-- Time Selection Buttons -->
-			<div class="row">
-				<div class="large-4 columns">
-					<a id="pomodorobutton" href="#" class="large button expand">Pomodoro</a>
-					<a id="shortbreakbutton" href="#" class="large button expand">Short Break</a>
-					<a id="longbreakbutton" href="#" class="large button expand">Long Break</a>
-				</div>
-
-				<!--Time Display Panel-->
-				<div class="large-8 columns">
-					<div class="panel">
-						</br>
-						</br>
-						</br>
-						</br>
-						<center><h1 style= "font-size: 4em"id="timerdisplay">Loading...</h1></center>
-						</br>
-						<div id="timerprogressbar" class="progress large-10 success large-offset-1"><span id="progressbar" class="meter" style="width: 100%"></span></div>
-						</br>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!--Timer Control Buttons-->
-	<div class="row">
-		<div class="large-8 large-offset-4 columns">
-			<ul class ="button-group even-3 three-up">
-				<li>
-					<a id="startbutton" href="#" class="large button">Start</a>
-				</li>
-				<li>
-					<a id="pausebutton" href="#" class="large alert button">Pause</a>
-				</li>
-				<li>
-					<a id="resetbutton" href="#" class="large secondary button">Reset</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-
-	<!--Footer-->
-	<div class="row">
-		<div class="large-12 columns">
-			<hr />
-			</br>
-			<div class="row">
-				<!---The Hotkey Panel-->
-				<div class="large-4 columns">
-					<div class="panel">
-						<h5>Keyboard Shortcuts</h5>
-                			<ul>
-			  					<li><strong>SPACE  </strong>&nbsp;&nbsp;Start or Stop the timer</li>
-			  					<li><strong>ALT + P</strong>&nbsp;&nbsp;Pomodoro</li>
-			  					<li><strong>ALT + S</strong>&nbsp;&nbsp;Short Break</li>
-			  					<li><strong>ALT + L</strong>&nbsp;&nbsp;Long Break</li>
-			  					<li><strong>ALT + R</strong>&nbsp;&nbsp;Reset Timer</li>
-							</ul>
-					</div>
-				</div>
-				<!--Another Panel for misc. stuff, maybe copyright info?-->
-				<div class="large-8 columns">
-					<div class="panel">
-						<h3 id="pomodorocounter" align="right">Pomodoro Count: 0</h3>
-					</div>
-				</div>
-				<div class="large-8 columns">
-					<div style="position: absolute; right: 10px;">
-						<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-						<input type="hidden" name="cmd" value="_s-xclick">
-						<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-						">
-						<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-						</form>
-					</div>
-				</div>
-		</div>
-
-
-  <script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  
-  <script src="js/vendor/jquery.js"></script>
-
-  <script src="js/foundation.min.js"></script>
-
-  <script src="js/jquery.the_final_countdown.js"></script>
-
-  <script src="js/kronometrotomata.js"></script>
-  <!--
-  
-  <script src="js/foundation/foundation.js"></script>
-  
-  <script src="js/foundation/foundation.dropdown.js"></script>
-  
-  <script src="js/foundation/foundation.placeholder.js"></script>
-  
-  <script src="js/foundation/foundation.forms.js"></script>
-  
-  <script src="js/foundation/foundation.alerts.js"></script>
-  
-  <script src="js/foundation/foundation.magellan.js"></script>
-  
-  <script src="js/foundation/foundation.reveal.js"></script>
-  
-  <script src="js/foundation/foundation.tooltips.js"></script>
-  
-  <script src="js/foundation/foundation.clearing.js"></script>
-  
-  <script src="js/foundation/foundation.section.js"></script>
-  
-  <script src="js/foundation/foundation.topbar.js"></script>
-  
-  -->
-  
-  <script>
-    $(document).foundation();
-  </script>
+    <!--The Header-->
+    <div class="row">
+        <div class="large-5 columns">
+            <h2>Kronometro Tomata</h2>
+            <h4>Version 2</h4>
+        </div>
+        <!--Info and settings buttons which fire info and settings modals-->
+        <div class="large-2 large-offset-5 columns">
+            <a id="settingsbutton" class="button expand" data-reveal-id="settingsModal"><i class="foundicon-settings"></i></a>
+        </div>
+    </div>
+    <!--horizonal line spans screen-->
+    <div class="row">
+        <div class="large-12 columns">
+            <hr/>
+        </div>
+    </div>
+    <!--Settings Modal-->
+    <div id="settingsModal" class="reveal-modal" data-reveal>
+        <dl class="tabs" data-tab>
+            <dd class="active"><a href="#panel1">Settings</a>
+            </dd>
+            <dd><a href="#panel2">Themes</a>
+            </dd>
+            <dd><a href="#panel3">About</a>
+            </dd>
+        </dl>
+        <div class="tabs-content">
+            <div class="content active" id="panel1">
+                <form>
+                    <fieldset>
+                        <legend>Timer Lengths (Minutes)</legend>
+                        <label>Pomodoro Length</label>
+                        <input id="pomodoroinputbox" type="text" placeholder="Default is 25">
+                        <label>Short Break Length</label>
+                        <input id="shortbreakinputbox" type="text" placeholder="Default is 5">
+                        <label>Long Break Length</label>
+                        <input id="longbreakinputbox" type="text" placeholder="Default is 30">
+                        <!--Set and Default set buttons-->
+                        <ul class="button-group even-3 three-up">
+                            <li>
+                                <a id="setlengthbutton" class="button">Set</a>
+                            </li>
+                            <li>
+                                <a id="defaultbutton" class="secondary button">Reset Default Lengths</a>
+                            </li>
+                            <li>
+                                <a id="resetcountbutton" class="alert button">Reset Pomodoro Count</a>
+                            </li>
+                        </ul>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="content" id="panel2">
+                <fieldset>
+                    <legend>Theme Chooser</legend>
+                    <a id="defaultthemebutton" class="button expand">Light</a>
+                    <a id="darkthemebutton" class="button expand">Dark</a>
+                    <a id="herothemebutton" class="button expand">Hero</a>
+                    <p>
+                        <strong>Theme support is experimental.</strong>
+                    </p>
+                </fieldset>
+            </div>
+            <div class="content" id="panel3">
+                <h2>About Kronometro Tomata</h2>
+                <p>
+                    Kronometro Tomata (KT) is a web application designed to let you use the Pomodoro Technique to manage your time more effectively and with more peace of mind. It includes the most basic time tracking and recording elements of the technique while leaving more complex recording up to the user to do as they like. Personally I like to use a simple pen and notebook to keep track of activities, other people prefer to use complex spreadsheet methods. KT leaves it up to you.
+                </p>
+                <p>
+                    KT began as a project to correct the weak points me and my friends saw in the popular <a href="http://tomato-timer.com/">Tomato Timer</a> webapp. It also was a learning project for me to get used to writing Javascript and JQuery code, as well as using the Foundation framework. KT includes the settings functions that the developer of Tomato Timer promised but did not get around to including. It also is <strong>persistent</strong> and saves your timer progress across sessions so that even if you accidentally close the KT tab you can immediately reload it without losing your progress.
+                </p>
+                <p>
+                    You can learn more about the Pomodoro Technique <a href="http://www.pomodorotechnique.com/book/">here</a>.
+                </p>
+                <p>
+                    Kronometro Tomata is free software licensed under the GPL. To learn more about free software visit: <a href="http://www.fsf.org/">http://www.fsf.org/</a>.
+                </p>
+                <p>
+                    The words "Kronometro Tomata" are taken from Esperanto. To learn more about Esperanto visit: <a href="http://en.lernu.net/">http://en.lernu.net/</a>.
+                </p>
+                <p>
+                    Kronometro Tomata was written using the <a href="http://www.linuxmint.com/">Linux Mint</a> and <a href="http://www.netrunner-os.com/">Netrunner</a> distributions of GNU/Linux and the <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a> web browser.
+                </p>
+                <p>
+                    I can be contacted <a href="mailto:kyle.alexander.thompson@gmail.com">here</a>.
+                </p>
+                <p>
+                    Dark theme and theme selection concept contributed by hippyjake.
+                </p>
+                <p>Version 2 contributed by Hippyjake.</p>
+            </div>
+        </div>
+        <a class="close-reveal-modal ">&#215;</a>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <!-- Time Selection Buttons -->
+            <div class="row">
+                <div class="large-4 columns">
+                    <a id="pomodorobutton" class="large button expand">Pomodoro</a>
+                    <a id="shortbreakbutton" class="large button expand">Short Break</a>
+                    <a id="longbreakbutton" class="large button expand">Long Break</a>
+                </div>
+                <!--Time Display Panel-->
+                <div class="large-8 columns">
+                    <div class="panel">
+                        <br>
+                        <br>
+                        <br>
+                        <center>
+                            <h1 style="font-size: 4em" id="timerdisplay">Loading...</h1>
+                        </center>
+                        <br>
+                        <div id="timerprogressbar" class="progress large-10 success large-offset-1"><span id="progressbar" class="meter" style="width: 100%"></span>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Timer Control Buttons-->
+    <div class="row">
+        <div class="large-8 large-offset-4 columns">
+            <ul class="button-group even-3">
+                <li>
+                    <a id="startbutton" class="large button">Start</a>
+                </li>
+                <li>
+                    <a id="pausebutton" class="large alert button">Pause</a>
+                </li>
+                <li>
+                    <a id="resetbutton" class="large secondary button">Reset</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Footer-->
+    <div class="row">
+        <div class="large-12 columns">
+            <hr />
+            <div class="row">
+                <!---The Hotkey Panel-->
+                <div class="large-4 columns hide-for-touch">
+                    <div class="panel">
+                        <h5>Keyboard Shortcuts</h5>
+                        <ul>
+                            <li><kbd>SPACE</kbd>&nbsp;&nbsp;Start or Stop the timer</li>
+                            <li><kbd>ALT</kbd> + <kbd>P</kbd>&nbsp;&nbsp;Pomodoro</li>
+                            <li><kbd>ALT</kbd> + <kbd>S</kbd>&nbsp;&nbsp;Short Break</li>
+                            <li><kbd>ALT</kbd> + <kbd>L</kbd>&nbsp;&nbsp;Long Break</li>
+                            <li><kbd>ALT</kbd> + <kbd>R</kbd>&nbsp;&nbsp;Reset Timer</li>
+                        </ul>
+                    </div>
+                </div>
+                <!--Another Panel for misc. stuff, maybe copyright info?-->
+                <div class="large-8 columns">
+                    <div class="panel">
+                        <h3 id="pomodorocounter" align="right">Pomodoro Count: 0</h3>
+                    </div>
+                </div>
+                <div class="large-8 columns">
+                    <div style="position: absolute; right: 10px;">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/jquery.the_final_countdown.js"></script>
+    <script src="js/kronometrotomata.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
 </body>
+
 </html>

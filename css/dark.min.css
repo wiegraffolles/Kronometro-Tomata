@@ -1,0 +1,6 @@
+/*
+ *  DARK
+ *  Theme Mask for Kronometro Tomata
+ *  Jake Strichek 2015 <hippyjake@gmail.com>
+ */
+body,fieldset legend{background:#272822;color:#fff}.panel dl,.panel h1,.panel h2,.panel h3,.panel h4,.panel h5,.panel h6,.panel li,.panel p,h1,h2,h3,h4,h5,h6,label{color:#fff}fieldset{border:1px solid #444}.breadcrumbs>*.current{color:#444}.panel{background:#272822;border-color:#444}.tabs .tab-title>a,.tabs dd>a{background-color:transparent;color:#fff}.tabs .tab-title>a:hover,.tabs dd>a:hover{background-color:#32332b}.tabs .tab-title.active a,.tabs dd.active a{background-color:#444;color:#fff}hr{border:1px solid #444}.reveal-modal,dialog{background-color:#272822;border:solid 1px #444}.progress{background-color:transparent;border:1px solid #444}

@@ -4,7 +4,7 @@ Kronometro Tomata (KT) is a web application designed to let you use the Pomodoro
 
 KT began as a project to correct the weak points me and my friends saw in the popular [Tomato Timer]("http://tomato-timer.com/) webapp. It also was a learning project for me to get used to writing Javascript and JQuery code, as well as to using the Foundation framework. KT includes the settings functions that the developer of Tomato Timer promised but did not get around to including. It also is persistent and saves your timer progress across sessions so that even if you accidentally close the KT tab you can immediately reload it without losing your progress.
 
-*Note:* The creator of Tomato Timer has recently created a new web app with improved timer and stopwatch functionality, which can be found [here](http://online-current-time.en.downloadastro.com/tools/).
+**Note:** The creator of Tomato Timer has recently created a new web app with improved timer and stopwatch functionality, which can be found [here](http://online-current-time.en.downloadastro.com/tools/).
 
 ###Links
 
